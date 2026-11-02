@@ -1,0 +1,42 @@
+erDiagram
+    KHOA ||--o{ SVIEN : "quản lý"
+    KHOA ||--o{ MHOC : "phụ trách"
+    MHOC ||--o{ HPHAN : "được mở thành"
+    SVIEN ||--o{ KETQUA : "đạt kết quả"
+    HPHAN ||--o{ KETQUA : "có đăng ký"
+    MHOC ||--o{ DKIEN : "môn học"
+    MHOC ||--o{ DKIEN : "môn học tiên quyết"
+
+    KHOA {
+        varchar MAKHOA PK
+        varchar TENKHOA UK
+        int NAMTHANHLAP
+    }
+    SVIEN {
+        varchar MASV PK
+        varchar TENSV
+        int NAM
+        varchar MAKHOA FK
+    }
+    MHOC {
+        varchar MAMH PK
+        varchar MAKHOA FK
+        varchar TENMH UK
+        int TINCHI
+    }
+    DKIEN {
+        varchar MAMH PK, FK
+        varchar MAMH_TRUOC PK, FK
+    }
+    HPHAN {
+        int MAHP PK
+        varchar MAMH FK
+        int HOCKY
+        int NAM
+        varchar GV
+    }
+    KETQUA {
+        varchar MASV PK, FK
+        int MAHP PK, FK
+        decimal DIEM
+    }
